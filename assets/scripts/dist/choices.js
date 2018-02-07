@@ -1,4 +1,4 @@
-/*! choices.js v3.0.3 | (c) 2018 Josh Johnson | https://github.com/jshjohnson/Choices#readme */ 
+/*! choices.js v3.0.3 | (c) 2018 Josh Johnson | https://github.com/jshjohnson/Choices#readme */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -541,19 +541,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.passedElement.setAttribute('value', itemsFilteredString);
 	        this.passedElement.value = itemsFilteredString;
 	      } else {
-	        var selectedOptionsFragment = document.createDocumentFragment();
+          try {
+            var selectedOptionsFragment = document.createDocumentFragment();
 
-	        // Add each list item to list
-	        items.forEach(function (item) {
-	          // Create a standard select option
-	          var option = _this3._getTemplate('option', item);
-	          // Append it to fragment
-	          selectedOptionsFragment.appendChild(option);
-	        });
+            // Add each list item to list
+            items.forEach(function (item) {
+              // Create a standard select option
+              var option = _this3._getTemplate('option', item);
+              // Append it to fragment
+              selectedOptionsFragment.appendChild(option);
+            });
 
-	        // Update selected choices
-	        this.passedElement.innerHTML = '';
-	        this.passedElement.appendChild(selectedOptionsFragment);
+            // Update selected choices
+            this.passedElement.innerHTML = '';
+            this.passedElement.appendChild(selectedOptionsFragment);
+            }
+          catch(e) {
+            // IE9 HierarchyRequestError
+          }
 	      }
 
 	      // Add each list item to list

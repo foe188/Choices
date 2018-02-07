@@ -449,19 +449,24 @@ class Choices {
       this.passedElement.setAttribute('value', itemsFilteredString);
       this.passedElement.value = itemsFilteredString;
     } else {
-      const selectedOptionsFragment = document.createDocumentFragment();
+      try {
+        const selectedOptionsFragment = document.createDocumentFragment();
 
-      // Add each list item to list
-      items.forEach((item) => {
-        // Create a standard select option
-        const option = this._getTemplate('option', item);
-        // Append it to fragment
-        selectedOptionsFragment.appendChild(option);
-      });
+        // Add each list item to list
+        items.forEach((item) => {
+          // Create a standard select option
+          const option = this._getTemplate('option', item);
+          // Append it to fragment
+          selectedOptionsFragment.appendChild(option);
+        });
 
-      // Update selected choices
-      this.passedElement.innerHTML = '';
-      this.passedElement.appendChild(selectedOptionsFragment);
+        // Update selected choices
+        this.passedElement.innerHTML = '';
+        this.passedElement.appendChild(selectedOptionsFragment);
+      }
+      catch(e) {
+        // IE9 HierarchyRequestError
+      }
     }
 
     // Add each list item to list

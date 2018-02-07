@@ -2,7 +2,7 @@
   "name": "choices.js",
   "version": "3.0.3",
   "description": "A vanilla JS customisable text input/select box plugin",
-  "main": "./assets/scripts/dist/choices.min.js",
+  "main": "./assets/scripts/dist/choices.js",
   "types": "./types/index.d.ts",
   "scripts": {
     "start": "node server.js",
